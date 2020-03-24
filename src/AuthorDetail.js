@@ -7,7 +7,7 @@ import BookTable from "./BookTable";
 import AddBookModal from "./AddBookButton";
 import Loading from "./Loading";
 
-const AuthorDetail = ({ authors, books, loading, match }) => {
+const AuthorDetail = ({ user, authors, books, loading, match }) => {
   if (loading) return <Loading />;
 
   const { authorID } = match.params;
@@ -31,8 +31,9 @@ const AuthorDetail = ({ authors, books, loading, match }) => {
         />
       </div>
       <BookTable books={authorBooks} />
-      <AddBookModal authorID={author.id} />
+      {user && <AddBookModal authorID={author.id} />}
     </div>
+
   );
 };
 
